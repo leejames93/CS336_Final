@@ -1,0 +1,118 @@
+<h1>Election and Economy</h1>
+<h3>Unemployment Rate vs Election Result</h3>
+
+<canvas id="myChart" width="740" height="200"></canvas>
+
+<script>
+
+    var data = $json;
+    var year = [];
+    var unemployment = [];
+    var points = [];
+    data.reverse();
+    for(var i in data) {
+        year.push(data[i].Year);
+        unemployment.push(data[i].Unemployment);
+        if(data[i].Party == 'Republican') {
+            points.push('red');
+        } else {
+            points.push('blue');
+        }
+    }
+
+    var chartdata = {
+        labels: year,
+        datasets : [
+            {
+                label: 'Unemployment',
+                backgroundColor: 'rgba(200, 200, 200, 0.75)',
+                borderColor: 'rgba(200, 200, 200, 0.75)',
+                hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
+                hoverBorderColor: 'rgba(200, 200, 200, 1)',
+                pointBackgroundColor: points,
+                data: unemployment,
+                lineTension:0
+            }
+        ]
+    };
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: chartdata
+    });
+
+
+</script>
+<br>
+<h3>GDP growth vs Election Result</h3>
+<canvas id="myChart2" width="740" height="200"></canvas>
+
+<script>
+
+    var data = $q2;
+    var year = [];
+    var unemployment = [];
+    var points = [];
+    data.reverse();
+    for(var i in data) {
+        year.push(data[i].From_Year);
+        unemployment.push(data[i].GDP_Growth);
+        if(data[i].President == 'Republican') {
+            points.push('red');
+        } else {
+            points.push('blue');
+        }
+    }
+
+    var chartdata = {
+        labels: year,
+        datasets : [
+            {
+                label: 'GDP_Growth',
+                backgroundColor: 'rgba(200, 200, 200, 0.75)',
+                borderColor: 'rgba(200, 200, 200, 0.75)',
+                hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
+                hoverBorderColor: 'rgba(200, 200, 200, 1)',
+                pointBackgroundColor: points,
+                data: unemployment,
+                lineTension:0
+            }
+        ]
+    };
+
+    var ctx = document.getElementById('myChart2').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: chartdata
+    });
+
+
+</script>
+<div>
+    <h3>
+        Stronger growth in GDP, Republican Party wins (Remains controlling party)
+    </h3>
+    <table class="table">
+        <thead>
+        <tr>
+            #foreach ($item in $q3.get(0).entrySet())
+                <td>
+                    $item.getKey()
+                </td>
+            #end
+        </tr>
+        </thead>
+        <tbody>
+            #foreach($map in $q3)
+            <tr>
+                #foreach($thing in $map.entrySet())
+                    <td>$thing.getValue()</td>
+                #end
+            </tr>
+            #end
+        </tbody>
+    </table>
+</div>
+
+##<script> src="/js/EconomyGraph.js"</script>

@@ -1,0 +1,90 @@
+<h1>Quick Facts</h1>
+<br>
+##States that only voted for:
+##<form action="/query">
+####    <div class="col-md-4">
+##
+##        <select class="form-control" name="party" size=1>
+##            <option value="Republican">Republican</option>
+##            <option value="Democratic">Democratic</option>
+##        </select>
+##
+##        <button type="submit" class="btn btn-default">Go!</button>
+####    </div>
+##</form>
+<div>
+<h3 style="color:red">MYTH:</h3>
+<h4>Whoever gets the most votes in an election wins!</h4>
+
+<table class="table">
+    <thead>
+    <tr>
+        #foreach ($item in $q1.get(0).entrySet())
+            <td>
+                Candidates who received more popular votes but lost the election
+            </td>
+        #end
+    </tr>
+    </thead>
+    <tbody>
+        #foreach($map in $q1)
+        <tr>
+            #foreach($thing in $map.entrySet())
+                <td>$thing.getValue()</td>
+            #end
+        </tr>
+        #end
+    </tbody>
+</table>
+</div>
+<br>
+<div>
+    <h3>Running against a President who is running for reelection is not a good idea BUT it is not impossible.</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            #foreach ($item in $q2.get(0).entrySet())
+                <td>
+                    $item.getKey()
+                </td>
+            #end
+        </tr>
+        </thead>
+        <tbody>
+            #foreach($map in $q2)
+            <tr>
+                #foreach($thing in $map.entrySet())
+                    <td>$thing.getValue()</td>
+                #end
+            </tr>
+            #end
+        </tbody>
+    </table>
+
+</div>
+<br>
+<div>
+    <h3>
+        The number of times a state voted for the winning candidate
+    </h3>
+    <table class="table">
+        <thead>
+        <tr>
+            #foreach ($item in $q3.get(0).entrySet())
+                <td>
+                    $item.getKey()
+                </td>
+            #end
+        </tr>
+        </thead>
+        <tbody>
+            #foreach($map in $q3)
+            <tr>
+                #foreach($thing in $map.entrySet())
+                    <td>$thing.getValue()</td>
+                #end
+            </tr>
+            #end
+        </tbody>
+    </table>
+</div>

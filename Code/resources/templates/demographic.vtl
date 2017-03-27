@@ -1,0 +1,35 @@
+<h1>Demographic</h1>
+<div>
+    <h3>US Voters represented by:</h3>
+    <form action="/demoquery">
+            <select class="form-control" name="option" size=1>
+                <option value="Sex">Sex</option>
+                <option value="Race">Race</option>
+                <option value="Education">Education</option>
+            </select>
+            <button type="submit" class="btn btn-default">Go!</button>
+    </form>
+</div>
+<div>
+<h3>Number of times (sex, education, race) voted for winner</h3>
+<table class="table">
+    <thead>
+    <tr>
+        #foreach ($item in $q1.get(0).entrySet())
+            <td>
+                $item.getKey()
+            </td>
+        #end
+    </tr>
+    </thead>
+    <tbody>
+        #foreach($map in $q1)
+        <tr>
+            #foreach($thing in $map.entrySet())
+                <td>$thing.getValue()</td>
+            #end
+        </tr>
+        #end
+    </tbody>
+</table>
+</div>

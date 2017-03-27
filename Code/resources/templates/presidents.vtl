@@ -1,0 +1,91 @@
+<h1>Presidents</h1>
+<div>
+    <h3>How having majority in Congress affects the election</h3>
+    <div class="col-md-4">
+        <h3>House Majority</h3>
+        <canvas id="myChart1" width="200" height="200"></canvas>
+    </div>
+    <div class="col-md-4">
+        <h3>Senate Majority</h3>
+        <canvas id="myChart2" width="200" height="200"></canvas>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            #foreach ($item in $q2.get(0).entrySet())
+                <td>
+                    $item.getKey()
+                </td>
+            #end
+        </tr>
+        </thead>
+        <tbody>
+            #foreach($map in $q2)
+            <tr>
+                #foreach($thing in $map.entrySet())
+                    <td>$thing.getValue()</td>
+                #end
+            </tr>
+            #end
+        </tbody>
+    </table>
+</div>
+
+<script>
+    var ctx = document.getElementById("myChart1").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ["Won","Lost"],
+            datasets: [{
+                backgroundColor: [
+                    "#2ecc71",
+                    "#3498db"
+                ],
+                data: [7, 5]
+            }]
+        }
+    });
+
+</script>
+<script>
+    var ctx = document.getElementById("myChart2").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ["Won","Lost"],
+            datasets: [{
+                backgroundColor: [
+                    "#2ecc71",
+                    "#3498db"
+                ],
+                data: [7, 5]
+            }]
+        }
+    });
+</script>
+
+
+<div>
+    <h3>List of presidents</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            #foreach ($item in $q1.get(0).entrySet())
+                <td>
+                    $item.getKey()
+                </td>
+            #end
+        </tr>
+        </thead>
+        <tbody>
+            #foreach($map in $q1)
+            <tr>
+                #foreach($thing in $map.entrySet())
+                    <td>$thing.getValue()</td>
+                #end
+            </tr>
+            #end
+        </tbody>
+    </table>
+</div>
